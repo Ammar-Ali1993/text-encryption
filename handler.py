@@ -50,7 +50,7 @@ class Handler:
     def __seperate(self,text):
 
         chunks = [text[i:i + self.n] for i in range(0, len(text), self.n)]
-        chunks[len(chunks) - 1] = chunks[len(chunks) - 1].ljust(10, ' ')
+        chunks[len(chunks) - 1] = chunks[len(chunks) - 1].ljust(self.n, ' ')
         return chunks
 
 
