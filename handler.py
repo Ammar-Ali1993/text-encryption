@@ -1,12 +1,16 @@
 import transpose
 import replace
-import string
+import db
 
 class Handler:
 
     def __init__(self):
-        self.n = 10
-        self.behavior = [1 ,0 , 0, 1, 0, 1]
+        self.db = db.DB()
+        self.n = int(self.db.getPropery('sections')[0][2])
+        dbBehavrior = list(self.db.getPropery('behavior')[0][2])
+        integerBehavrior = map(int, dbBehavrior)
+        self.behavior = list(integerBehavrior)
+        print(self.behavior)
 
     def execute(self,text, type):
 

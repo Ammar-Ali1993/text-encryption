@@ -1,11 +1,13 @@
 from tkinter import Tk, Text, TOP, BOTH, X, N, LEFT, StringVar
-from tkinter.ttk import Frame, Label, Entry, Button, Radiobutton
+from tkinter.ttk import Frame, Label, Entry, Button, Radiobutton, Combobox
 import handler
+import db
 
 class MainWindow(Frame):
 
     def __init__(self):
         super().__init__()
+        self.db = db.DB()
         self.handler = handler.Handler()
         self.initUI()
 
@@ -43,8 +45,37 @@ class MainWindow(Frame):
         self.txt1 = Text(self.frame5, width=100, height=10)
         self.txt1.pack( pady=25, padx=25 )
 
+        self.frame6 = Frame(self)
+        self.frame6.pack()
+        self.lbl5 = Label(self.frame6, text="settings", width=10)
+        self.lbl5.pack(side=LEFT, anchor=N, padx=5, pady=5)
+
+        #setting up the combo
+        allProperties = self.db.getAllProperies()
+        comboContent = []
+        for x in allProperties:
+            comboContent.append(x[1])
+        self.combo = Combobox(self.frame6,text= 'preporty', values=comboContent)
+        self.combo.pack()
+
+        self.combo.bind('<<ComboboxSelected>>', self.comboModified)
+
+        self.frame7 = Frame(self)
+        self.frame7.pack()
+
+        self.lbl6 = Label(self.frame7, text="value", width=10)
+        self.lbl6.pack(side=LEFT, anchor=N, padx=5, pady=5)
 
 
+        self.entry = Entry(self.frame7)
+        self.entry.pack()
+
+        self.btn2 = Button(self.frame7, text='Save')
+        self.btn2.pack()
+
+    def comboModified(self, event):
+        self.entry.delete('0','end')
+        self.entry.insert('0',self.db.getPropery(self.combo.get())[0][2])
 
     def pushButton(self):
 

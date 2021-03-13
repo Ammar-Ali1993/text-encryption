@@ -1,11 +1,14 @@
 import string
+import db
 
 
 class Replace:
 
     def __init__(self):
-        self.spaceReplacement='^'
-        self.map='npbokrcdefyzjlqsuvwghitaxm'
+
+        self.db = db.DB()
+        self.spaceReplacement = self.db.getPropery('space_replacement')[0][2]
+        self.map = self.db.getPropery('replace_map')[0][2]
 
     def encrypt(self,text):
         returnString=''
