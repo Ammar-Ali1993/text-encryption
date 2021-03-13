@@ -10,7 +10,6 @@ class Handler:
         dbBehavrior = list(self.db.getPropery('behavior')[0][2])
         integerBehavrior = map(int, dbBehavrior)
         self.behavior = list(integerBehavrior)
-        print(self.behavior)
 
     def execute(self,text, type):
 

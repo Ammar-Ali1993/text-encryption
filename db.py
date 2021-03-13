@@ -41,7 +41,7 @@ class DB:
 
         mapAvailable = self.getPropery('replace_map')
         if not mapAvailable:
-            self.addPropery('replace_map', 'npborcdefyzjlqsuvwghitaxm')
+            self.addPropery('replace_map', 'npbokrcdefyzjlqsuvwghitaxm')
 
         mapAvailable = self.getPropery('transpose_map')
         if not mapAvailable:

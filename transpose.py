@@ -1,13 +1,7 @@
-import db
-
-
 class Transpose:
-    def __init__(self):
-        self.db = db.DB()
-        dbMap = list( self.db.getPropery('transpose_map')[0][2])
-        integerMap = map(int, dbMap)
-        self.map = list(integerMap)
 
+    def __init__(self):
+        self.map = [5, 10, 6, 8, 1, 3, 9, 4, 7, 2]
 
     def encrypt(self,text):
 
